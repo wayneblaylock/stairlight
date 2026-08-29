@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="darkreader-lock" content="">
+<title>Stairlight | Custom Smart LED Lighting</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="icon" href="media/favicon.ico" type="image/x-icon">
+<link rel="icon" type="image/png" sizes="32x32" href="media/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="media/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap');
+:root {
+--accent: #ffd6aa;
+--accent-hover: #ffe4c4;
+--accent-glow: rgb(255, 214, 170);
+}
+.hero-video {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+object-fit: cover;
+z-index: -2;
+}
+.hero-overlay {
+background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.8));
+}
+.service-card {
+transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+.service-card:hover {
+transform: translateY(-12px);
+box-shadow: 0 25px 50px -12px rgb(255 214 170 / 0.25);
+}
+.glow {
+text-shadow: 0 0 25px var(--accent-glow);
+}
+.service-icon {
+width: 180px;
+height: 180px;
+flex-shrink: 0;
+}
+@media (max-width: 640px) {
+.service-icon {
+width: 140px;
+height: 140px;
+}
+}
+</style>
+</head>
+<body class="bg-zinc-950 text-zinc-200 font-sans overflow-x-hidden">
+<!-- Navbar -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-zinc-950/90 backdrop-blur-lg border-b border-zinc-800 py-4">
+<div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+<a href="#" onclick="scrollToTop(); return false;" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
+<img src="media/stairlight.svg" alt="Stairlight Logo" width="48" height="48" class="flex-shrink-0" />
+<span class="text-2xl font-semibold tracking-tighter">STAIRLIGHT</span>
+</a>
+
+<!-- Desktop Menu -->
+<div class="hidden md:flex items-center gap-8 text-sm font-medium">
+<a href="#services" class="hover:text-[var(--accent)] transition-colors">Services</a>
+<a href="#process" class="hover:text-[var(--accent)] transition-colors">Process</a>
+<a href="#contact" class="hover:text-[var(--accent)] transition-colors">Contact</a>
+</div>
+
+<!-- Mobile Menu Button -->
+<button id="mobile-menu-button" class="md:hidden flex items-center justify-center w-10 h-10 text-zinc-200 hover:text-[var(--accent)] transition-colors">
+<i class="fas fa-bars text-2xl"></i>
+</button>
+
+<a href="#contact" class="px-6 py-3 bg-white text-zinc-900 hover:bg-[var(--accent)] hover:text-zinc-900 rounded-2xl font-semibold text-sm transition-all hidden md:block">
+    GET A QUOTE
+</a>
+</div>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="hidden md:hidden bg-zinc-950 border-t border-zinc-800 py-6 px-6">
+<div class="flex flex-col gap-6 text-lg font-medium">
+<a href="#services" class="hover:text-[var(--accent)] transition-colors py-2" onclick="toggleMobileMenu()">Services</a>
+<a href="#process" class="hover:text-[var(--accent)] transition-colors py-2" onclick="toggleMobileMenu()">Process</a>
+<a href="#contact" class="hover:text-[var(--accent)] transition-colors py-2" onclick="toggleMobileMenu()">Contact</a>
+<a href="#contact" onclick="toggleMobileMenu()" class="mt-4 inline-block px-8 py-4 bg-white text-zinc-900 hover:bg-[var(--accent)] hover:text-zinc-900 rounded-3xl font-semibold text-center transition-all">
+    GET A QUOTE
+</a>
+</div>
+</div>
+</nav>
+
+<!-- Hero -->
+<header class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16" id="hero">
+<video autoplay muted loop playsinline preload="auto" class="hero-video" id="heroVideo">
+<source src="media/video.mp4" type="video/mp4">
+<source src="media/video.webm" type="video/webm">
+    Your browser does not support the video tag.
+</video>
+<div class="hero-overlay absolute inset-0"></div>
+<div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
+<h1 class="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tighter leading-none glow mb-6">
+      ENHANCING<br>SAFETY &amp; STYLE
+</h1>
+<p class="text-lg sm:text-xl md:text-2xl text-zinc-300 max-w-2xl mx-auto mb-10">
+      Custom LED lighting designed for new construction, remodels, and existing homes.
+</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<a href="#contact" class="px-10 py-5 bg-white hover:bg-[var(--accent)] text-zinc-950 hover:text-zinc-900 font-semibold rounded-3xl text-lg transition-all">
+        START YOUR PROJECT
+</a>
+<a href="#services" class="px-10 py-5 border border-white/40 hover:border-white font-medium rounded-3xl text-lg transition-all">
+        SEE OUR WORK
+</a>
+</div>
+</div>
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-xs tracking-widest flex flex-col items-center">
+    SCROLL
+<div class="w-px h-10 bg-gradient-to-b from-transparent via-zinc-400 to-transparent mt-2"></div>
+</div>
+</header>
+
+<!-- Services -->
+<section id="services" class="py-24 pt-20 bg-zinc-900">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-4xl sm:text-5xl font-semibold tracking-tight">Lighting Applications</h2>
+<p class="text-zinc-400 mt-4 text-lg max-w-md mx-auto">Every installation can be controlled from your phone, with optional motion sensors and smart home integration.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Service cards unchanged except responsive icon sizing via CSS -->
+<div class="service-card bg-zinc-950 border border-zinc-800 rounded-3xl p-8">
+<div class="text-white mb-6 flex justify-center">
+<img src="media/tread.svg" alt="Staircase Treads" class="service-icon" />
+</div>
+<h3 class="text-2xl font-semibold mb-3 text-center">Stair Treads</h3>
+<p class="text-zinc-400 text-center">Illuminate every step with seamless lighting that adds elegance, improves visibility, and enhances safety.</p>
+</div>
+<!-- (All other service cards identical to your original) -->
+<div class="service-card bg-zinc-950 border border-zinc-800 rounded-3xl p-8">
+<div class="text-white mb-6 flex justify-center">
+<img src="media/side.svg" alt="Staircase Treads" class="service-icon" />
+</div>
+<h3 class="text-2xl font-semibold mb-3 text-center">Stair Sides</h3>
+<p class="text-zinc-400 text-center">Perfect for stairs without tread overhangs. Creates soft, indirect lighting that beautifully guides every step.</p>
+</div>
+<div class="service-card bg-zinc-950 border border-zinc-800 rounded-3xl p-8">
+<div class="text-white mb-6 flex justify-center">
+<img src="media/cabinents.svg" alt="Staircase Treads" class="service-icon" />
+</div>
+<h3 class="text-2xl font-semibold mb-3 text-center">Cabinets & Toe-Kicks</h3>
+<p class="text-zinc-400 text-center">Add functional task lighting to countertops or soft accent lighting beneath cabinets for a warm nighttime glow.</p>
+</div>
+<div class="service-card bg-zinc-950 border border-zinc-800 rounded-3xl p-8">
+<div class="text-white mb-6 flex justify-center">
+<img src="media/base.svg" alt="Staircase Treads" class="service-icon" />
+</div>
+<h3 class="text-2xl font-semibold mb-3 text-center">Baseboards & Hallways</h3>
+<p class="text-zinc-400 text-center">Transform hallways and walkways with subtle pathway lighting that's both stylish and practical after dark.</p>
+</div>
+<div class="service-card bg-zinc-950 border border-zinc-800 rounded-3xl p-8">
+<div class="text-white mb-6 flex justify-center">
+<img src="media/shelf.svg" alt="Staircase Treads" class="service-icon" />
+</div>
+<h3 class="text-2xl font-semibold mb-3 text-center">Shelving & Displays</h3>
+<p class="text-zinc-400 text-center">Highlight bookshelves, floating shelves, hutches, and display cabinets with clean, integrated accent lighting.</p>
+</div>
+<div class="service-card bg-zinc-950 border border-zinc-800 rounded-3xl p-8">
+<div class="text-white mb-6 flex justify-center">
+<img src="media/bed.svg" alt="Staircase Treads" class="service-icon" />
+</div>
+<h3 class="text-2xl font-semibold mb-3 text-center">Backlighting</h3>
+<p class="text-zinc-400 text-center">Add depth and ambiance behind beds, TVs, furniture, headboards, and more for a modern, floating appearance.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Process -->
+<section id="process" class="py-24 pt-20">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="text-4xl sm:text-5xl font-semibold tracking-tight">Professional. Reliable. Beautiful.</h2>
+<div class="mt-10 space-y-10">
+<!-- Steps unchanged except flex-shrink-0 on numbers -->
+<div class="flex gap-6">
+<div class="font-mono text-[var(--accent)] text-4xl font-semibold flex-shrink-0">01</div>
+<div>
+<h4 class="text-xl font-medium">Design Consultation</h4>
+<p class="text-zinc-400">We collaborate with you or your builder to create a custom lighting plan tailored to your home and lifestyle.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="font-mono text-[var(--accent)] text-4xl font-semibold flex-shrink-0">02</div>
+<div>
+<h4 class="text-xl font-medium">Expert Installation</h4>
+<p class="text-zinc-400">Running concealed wiring, mounting aluminum channel, installing LEDs, programming the controller, and adding power.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="font-mono text-[var(--accent)] text-4xl font-semibold flex-shrink-0">03</div>
+<div>
+<h4 class="text-xl font-medium">Hands-On Training</h4>
+<p class="text-zinc-400">We'll help you get comfortable using your new lighting system, including your phone, voice assistants, schedules, scenes, and motion sensors.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-10">
+<div class="text-3xl font-medium mb-8">1-Year Full Warranty</div>
+<p class="text-zinc-400">We stand behind every install with comprehensive parts and labor coverage.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="py-24 pt-20 bg-zinc-900">
+<div class="max-w-2xl mx-auto px-6">
+<div class="text-center mb-12">
+<h2 class="text-4xl sm:text-5xl font-semibold">Get In Touch</h2>
+<p class="text-zinc-400 mt-3">Tell us about your project</p>
+</div>
+<form action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
+<input type="hidden" name="access_key" value="fdf60016-e853-425f-8814-5fcefd0fa711">
+<input type="hidden" name="redirect" value="submitted.html">
+<input type="text" name="honeypot" style="display:none;" />
+<input type="hidden" name="subject" value="New Stairlight Project Inquiry">
+<input type="text" name="name" placeholder="Your Name" required class="w-full bg-zinc-950 border border-zinc-700 rounded-2xl px-6 py-4 text-base">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<input type="email" name="email" placeholder="Email" required class="w-full bg-zinc-950 border border-zinc-700 rounded-2xl px-6 py-4 text-base">
+<input type="tel" name="phone" placeholder="Phone" class="w-full bg-zinc-950 border border-zinc-700 rounded-2xl px-6 py-4 text-base">
+</div>
+<textarea name="message" rows="6" placeholder="Project details..." class="w-full bg-zinc-950 border border-zinc-700 rounded-3xl px-6 py-4 text-base"></textarea>
+<button type="submit" class="w-full py-6 bg-white hover:bg-[var(--accent)] text-zinc-950 hover:text-zinc-900 font-semibold rounded-3xl text-lg transition">
+        SEND MESSAGE
+</button>
+</form>
+</div>
+</section>
+
+<footer class="bg-black py-8 text-center text-sm text-zinc-500">
+  © 2026 Stairlight
+<br>Serving Utah County & Salt Lake County
+</footer>
+
+<script>
+// Mobile menu
+const mobileMenuButton = document.getElementById('mobile-menu-button');
+const mobileMenu = document.getElementById('mobile-menu');
+
+function toggleMobileMenu() {
+  mobileMenu.classList.toggle('hidden');
+}
+mobileMenuButton.addEventListener('click', toggleMobileMenu);
+
+// Smooth scrolling (unchanged)
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function(e) {
+const href = this.getAttribute('href');
+if (href === '#') {
+e.preventDefault();
+window.scrollTo({ top: 0, behavior: 'smooth' });
+} else if (href.length > 1) {
+e.preventDefault();
+const targetId = href.substring(1);
+const targetElement = document.getElementById(targetId);
+if (targetElement) {
+const navHeight = 78;
+const offsetPosition = targetElement.getBoundingClientRect().top + window.scrollY - navHeight;
+window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+}
+}
+});
+});
+
+function scrollToTop() {
+window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Hero video autoplay (unchanged)
+const video = document.getElementById('heroVideo');
+if (video) {
+video.muted = true;
+video.playsInline = true;
+const attemptPlay = () => { video.play().catch(err => console.log('Autoplay prevented:', err.name)); };
+video.addEventListener('loadedmetadata', attemptPlay);
+video.addEventListener('canplay', attemptPlay);
+setTimeout(attemptPlay, 500);
+setTimeout(attemptPlay, 1500);
+}
+</script>
+</body>
+</html>

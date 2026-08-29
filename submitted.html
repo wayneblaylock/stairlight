@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You | Stairlight</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="media/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="32x32" href="media/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="media/apple-touch-icon.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap');
+        :root {
+            --accent: #ffd6aa;
+            --accent-hover: #ffe4c4;
+        }
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        .heading-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .glow {
+            text-shadow: 0 0 25px rgb(255 214 170);
+        }
+    </style>
+</head>
+<body class="bg-zinc-950 text-zinc-200 min-h-screen flex items-center justify-center overflow-x-hidden">
+    <div class="max-w-2xl mx-auto px-6 text-center py-20">
+        <!-- Logo -->
+        <div class="flex justify-center mb-8">
+            <a href="index.html" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
+                <img src="media/stairlight.svg" alt="Stairlight Logo" width="64" height="64" class="flex-shrink-0" />
+                <span class="text-3xl font-semibold tracking-tighter">STAIRLIGHT</span>
+            </a>
+        </div>
+
+        <!-- Success Icon -->
+        <div class="w-24 h-24 mx-auto mb-8 bg-emerald-500/10 rounded-3xl flex items-center justify-center border border-emerald-500/30">
+            <i class="fa-solid fa-check text-5xl text-emerald-400"></i>
+        </div>
+
+        <h1 class="text-5xl md:text-6xl font-bold tracking-tighter heading-font glow mb-6">
+            THANK YOU!
+        </h1>
+        
+        <p class="text-2xl text-zinc-300 mb-4">
+            We've received your message.
+        </p>
+        <p class="text-xl text-zinc-400 max-w-md mx-auto mb-12">
+            Thanks for reaching out about your lighting project.<br>
+            We'll get back to you within 1-2 business days.
+        </p>
+
+        <!-- Back to Home Button -->
+        <a href="index.html" 
+           class="inline-flex items-center gap-3 px-10 py-5 bg-white hover:bg-[var(--accent)] text-zinc-950 hover:text-zinc-900 font-semibold rounded-3xl text-lg transition-all">
+            <i class="fa-solid fa-arrow-left"></i>
+            RETURN TO HOMEPAGE
+        </a>
+
+        <div class="mt-16 text-zinc-500 text-sm">
+            © 2026 Stairlight • Serving Utah County & Salt Lake County
+        </div>
+    </div>
+
+    <script>
+        // Optional: Auto-redirect to home after 8 seconds
+        setTimeout(() => {
+            window.location.href = "index.html";
+        }, 8000);
+    </script>
+</body>
+</html>
